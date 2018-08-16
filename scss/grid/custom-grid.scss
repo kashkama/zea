@@ -1,0 +1,60 @@
+@import "grid";
+
+.container_12 {
+    background: #fff;
+    font-size: 30px;
+    text-shadow: 0 1px 1px rgba(black, .5);
+    position: relative;
+    overflow: hidden;
+}
+header { background: #429032; }
+nav { background: #2963BD; }
+section { background: #c90; }
+footer { background: #c03; }
+article {
+    background: rgba(black, .3);
+}
+.row > div {
+    padding: 10px 0;
+    background: #222;
+    font-size: 20px;
+    color: white;
+}
+header, footer {
+    min-height: 150px;
+}
+section {
+    min-height: 440px;
+    p {
+        margin-bottom: 0;
+        padding-bottom: 20px;
+    }
+}
+nav p {
+    margin-bottom: 0;
+    padding-bottom: 20px;
+}
+nav {
+    @include forLargeScreens(640) {
+        height: 440px;
+    }
+}
+header, footer {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    @include forLargeScreens(640) {
+        display: block;
+    }
+}
+
+body {
+    margin: 0;
+    padding: 20px;
+}

@@ -1,0 +1,78 @@
+@charset "UTF-8";
+/*
+Custom Fluid & Responsive Grid System
+Structure: Mobile-first (min-width)
+Syntax: SCSS
+Grid: Float-based
+Created by: kashkama
+Date: 18/04/18
+*/
+
+*, *:before, *:after {
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+}
+
+// mobile-first media queries
+@mixin forLargeScreens($width) {
+    @media (min-width: $width/16+em) {@content;}
+}
+
+// Main container
+.container_12 {
+    width: 100%;
+    max-width: 1200px;
+    padding: 0 1.67%;
+    margin: auto;
+}
+
+// grid
+.grid {
+    // global properties - mobile first
+    &-1, &-2, &-3, &-4, &-5, &-6, &-7, &-8, &-9, &-10, &-11, &-12 {
+        width: 100%;
+    }
+    @include forLargeScreens(640) {
+        // global properties -large screens
+        &-1, &-2, &-3, &-4, &-5, &-6, &-7, &-8, &-9, &-10, &-11, &-12 {
+            float: left;
+            margin: 0 .83%;
+        }
+    }
+}
+
+// grid 12 columns
+.grid {
+    &-1 { width:6.67%; }
+    &-2 { width:15%; }
+    &-3 { width:23.33%; }
+    &-4 { width:31.67%; }
+    &-5 { width:40%; }
+    &-6 { width:48.33%; }
+    &-7 { width:56.67%; }
+    &-8 { width:65%; }
+    &-9 { width:73.33%; }
+    &-10 { width:81.67%; }
+    &-11 { width:90%; }
+    &-12 { width:98.33%; }
+}
+
+// clear floated elements
+.clear, .row {
+    &:before,
+    &:after {content: ""; display: table;}
+    &:after {clear: both;}
+}
+
+// use rows to nest containers
+.row {
+    margin-bottom: 10px;
+    &:last-of-type {
+        margin-bottom: 0;
+    }
+}
+
+// legacy IE
+.clear {
+    zoom: 1;
+}

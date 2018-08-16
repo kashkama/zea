@@ -1,0 +1,74 @@
+//Media Query Mixin - Desktop-first
+@mixin forSmallScreens($media) {
+    @media(max-width: $media/16+em) {@content;}
+}
+// Nav
+.main-nav {
+    max-width: 980px;
+    margin: auto;
+    padding: 10px 5px;
+    background: #555;
+    @include forSmallScreens(420) {
+        padding: 5px 0;
+    }
+}
+
+// All Navigations
+.nav-container {
+    display: flex;
+    justify-content: center;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    @include forSmallScreens(420) {
+        flex-wrap: wrap;
+    }
+    li{
+        display: flex;
+        width: 100%;
+        margin: 0 5px;
+        text-align: center;
+        @include forSmallScreens(420) {
+            display: flex;
+            justify-content: center;
+            flex-basis: 45%;
+            margin: 5px;
+        }
+    }
+    a{
+        @extend %highlight-section;
+        display: flex;
+        justify-content: center;
+        align-content: center;
+        width: 100%;
+        padding: 10px;
+        color: white;
+    }
+}
+
+// Header
+.masthead {
+    display: flex;
+    justify-content: space-between;
+    max-width: 980px;
+    padding: 10px;
+    background: #333;
+}
+
+// Placeholder
+%highlight-section {
+    border: white 1px solid;
+    border-radius: 3px;
+    background: rgba(white,.1)
+}
+
+// General
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+
+body{
+    font-family: Arial, "Helvetica Neue",Helvetica, sans-serif
+}

@@ -1,0 +1,172 @@
+/*
+Custom Fluid & Responsive Grid System
+Structure: Mobile-first (min-width)
+Syntax: SCSS
+Grid: Flexbox-based
+Created by: Kashkama
+Date: 25/04/2018
+*/
+
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+
+// mobile-first media queries
+@mixin forLargeScreens($media) {
+    @media (min-width: $media/16+em) {
+        @content;
+    }
+}
+
+// main container
+.main-container {
+    width: 100%; // change this value to anything no need to edit anything else
+    max-width: 1200px; // any value you want
+    padding: 0 1.67%;
+    margin: auto;
+}
+
+// flex container
+.flex-container {
+    margin-bottom: 10px; // remove the margin from the last flex container
+    &:last-of-type {
+        margin-bottom: 0;
+    }
+    @include forLargeScreens(640) {
+        display: flex;
+    }
+    @include forLargeScreens(780) {
+        display: flex;
+    }
+}
+
+// divs inside the flex container
+[class*="level-"] {
+    width: 100%;
+    text-align: center;
+    @include forLargeScreens(640) {
+        margin: .83%;
+    }
+    @include forLargeScreens(780) {
+        margin: .83%;
+        width: 100%;
+    }
+    &:first-of-type {
+        margin-left: 0;
+    }
+    &::last-of-type {
+        margin-right: 0;
+    }
+}
+
+header {
+    background: #429032;
+    text-align: center;
+    color: white;
+}
+
+nav {
+    background: #2963BD;
+    text-align: center;
+    color: white;
+}
+
+section {
+    background: #c90;
+    text-align: center;
+    color: white;
+}
+
+footer {
+    background: #c03;
+    text-align: center;
+    color: white;
+}
+
+header,
+footer {
+    min-height: 150px;
+}
+
+[class*="row-"] > div {
+    padding: 10px 0;
+    background: #222;
+    font-size: 20px;
+    color: white;
+}
+
+.row-5 > div {
+    width: 100%;
+    margin: .83%;
+    padding: 10px 0;
+    background: #222;
+    font-size: 20px;
+    color: white;
+}
+// all IEs
+.ie8,
+.ie9,
+.ie10 {
+    // exact values (desired width - 0.83%=result%) are commented, but they need tweaked to have one value for all IEs
+    section {
+        .row-1 .level-1 {
+            width: 49.17%;
+        } //Exact value is 32.17%
+        .row-2 .level-1 {
+            width: 32.20%;
+        } //Exact value is 24.17%
+        .row-3 .level-1 {
+            width: 23.75%;
+        }
+        .row-4 {
+            .content-a {
+                width: 19.17%;
+            }
+            .content-b {
+                width: 49.17%;
+            } //Exact value is 29.17%
+            .content-c {
+                width: 28.3%;
+            }
+        }
+    }
+}
+
+// IE8/9
+.ie8,
+.ie9 {
+    .flex-container {
+        overflow: hidden;
+    }
+    nav,
+    section {
+        float: left;
+        min-height: 440px;
+    }
+    nav {
+        width: 29%;
+        margin-right: 1%;
+    }
+    section {
+        width: 70%;
+    }
+    footer {
+        clear: both;
+        zoom: 1;
+    }
+}
+
+//IE8
+.ie8 {
+    [class*="level-"] {
+        display: inline-block;
+        margin: 0 .2%;
+    }
+} //IE9
+.ie9 {
+    [class*="level-"] {
+        float: left;
+    }
+}
